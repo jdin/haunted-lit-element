@@ -21,7 +21,9 @@
     "test:update-snapshots": "karma start --update-snapshots",
     "test:prune-snapshots": "karma start --prune-snapshots",
     "test:compatibility": "karma start --compatibility all --coverage",
-    "test:compatibility:watch": "karma start --compatibility all --auto-watch=true --single-run=false"
+    "test:compatibility:watch": "karma start --compatibility all --auto-watch=true --single-run=false",
+    "release": "release-it",
+    "release:dry": "release-it --dry-run"
   },
   "dependencies": {
     "haunted": "^4.6.0-beta.0",
@@ -37,6 +39,7 @@
     "eslint": "^6.1.0",
     "husky": "^1.0.0",
     "lint-staged": "^8.0.0",
+    "release-it": "^12.3.6",
     "webpack-merge": "^4.1.5"
   },
   "eslintConfig": {

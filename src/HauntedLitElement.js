@@ -1,36 +1,13 @@
-import { html, css, LitElement } from 'lit-element';
+import { LitElement } from 'lit-element';
+import { State } from 'haunted/core.js';
 
 export class HauntedLitElement extends LitElement {
-  static get styles() {
-    return css`
-      :host {
-        display: block;
-        padding: 25px;
-      }
-    `;
-  }
-
-  static get properties() {
-    return {
-      title: { type: String },
-      counter: { type: Number },
-    };
-  }
-
   constructor() {
     super();
-    this.title = 'Hey there';
-    this.counter = 5;
+    this.haunted = new State(() => this.requestUpdate());
   }
 
-  __increment() {
-    this.counter += 1;
-  }
-
-  render() {
-    return html`
-      <h2>${this.title} Nr. ${this.counter}!</h2>
-      <button @click=${this.__increment}>increment</button>
-    `;
+  update(_changedProperties) {
+    this.haunted.run(() => super.update(_changedProperties));
   }
 }

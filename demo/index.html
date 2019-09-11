@@ -9,21 +9,26 @@
   </style>
 </head>
 <body>
-  <div id="demo"></div>
+<div id="demo"></div>
 
-  <script type="module">
-    import { html, render } from 'lit-html';
-    import '../haunted-lit-element.js';
+<script type="module">
+    import {html, render} from 'lit-html';
+    import {useState} from "haunted/core.js";
+    import {litElementComponent} from "../index.js";
 
-    const title = 'Hello owc World!';
+    const renderer = () => {
+        const [count, setCount] = useState(0);
+        // const count = 0;
+        // const setCount = () => null;
+        return html`<p>${count}</p><button @click=${() => setCount(count + 1)}>+</button>`;
+    };
+
+    window.customElements.define('my-el', litElementComponent(renderer));
+
     render(
-      html`
-        <haunted-lit-element .title=${title}>
-          some more light-dom
-        </haunted-lit-element>
-      `,
-      document.querySelector('#demo')
+        html`<my-el></my-el>`,
+        document.querySelector('#demo')
     );
-  </script>
+</script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+
+  <script type="module">
+    import { html, render } from 'lit-html';
+    import '../haunted-lit-element.js';
+
+    const title = 'Hello owc World!';
+    render(
+      html`
+        <haunted-lit-element .title=${title}>
+          some more light-dom
+        </haunted-lit-element>
+      `,
+      document.querySelector('#demo')
+    );
+  </script>
+</body>
+</html>

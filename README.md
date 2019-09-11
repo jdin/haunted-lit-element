@@ -1,5 +1,7 @@
 # Haunted Lit Element
 
+[![Build Status](https://travis-ci.com/jdin/haunted-lit-element.svg?branch=master)](https://travis-ci.com/jdin/haunted-lit-element)
+
 A missing connection between [Haunted](https://github.com/matthewp/haunted) and [LitElement](https://github.com/polymer/lit-element).
 
 This project follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.

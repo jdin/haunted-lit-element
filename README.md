@@ -1,6 +1,8 @@
-# \<haunted-lit-element>
+# Haunted Lit Element
 
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+A missing connection between [Haunted](https://github.com/matthewp/haunted) and [LitElement](https://github.com/polymer/lit-element).
+
+This project follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
 ## Installation
 ```bash
@@ -10,28 +12,29 @@ npm i haunted-lit-element
 ## Usage
 ```html
 <script type="module">
-  import 'haunted-lit-element/haunted-lit-element.js';
+    import {useState} from "haunted/core.js";
+    import {css, html} from "lit-element";
+    import {litElementComponent} from "haunted-lit-element";
+
+    const renderer = ({title}) => {
+        const [count, setCount] = useState(0);
+        return html`<h1>${title}</h1><p>${count}</p><button @click=${() => setCount(count + 1)}>+</button>`;
+    };
+
+    const properties = {title: String};
+    const styles = css`h1 {color:red}`;
+    window.customElements.define('my-element', litElementComponent(renderer, {properties, styles}));
 </script>
 
-<haunted-lit-element></haunted-lit-element>
+<my-element title="Hi There!"></my-element>
 ```
 
-## Testing using karma (if applied by author)
+## Testing using karma
 ```bash
 npm run test
 ```
 
-## Testing using karma via browserstack (if applied by author)
-```bash
-npm run test:bs
-```
-
-## Demoing using storybook (if applied by author)
-```bash
-npm run storybook
-```
-
-## Linting (if applied by author)
+## Linting
 ```bash
 npm run lint
 ```

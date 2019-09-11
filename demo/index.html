@@ -12,19 +12,22 @@
 <div id="demo"></div>
 
 <script type="module">
-    import {html, render} from 'lit-html';
+    import {render} from 'lit-html';
     import {useState} from "haunted/core.js";
+    import {css, html} from "lit-element";
     import {litElementComponent} from "../index.js";
 
-    const renderer = () => {
+    const renderer = ({title}) => {
         const [count, setCount] = useState(0);
-        return html`<p>${count}</p><button @click=${() => setCount(count + 1)}>+</button>`;
+        return html`<h1>${title}</h1><p>${count}</p><button @click=${() => setCount(count + 1)}>+</button>`;
     };
 
-    window.customElements.define('my-el', litElementComponent(renderer));
+    const properties = {title: String};
+    const styles = css`h1 {color:red}`;
+    window.customElements.define('my-el', litElementComponent(renderer, {properties, styles}));
 
     render(
-        html`<my-el></my-el>`,
+        html`<my-el title="Hi there!"></my-el>`,
         document.querySelector('#demo')
     );
 </script>

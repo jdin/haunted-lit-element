@@ -20,8 +20,7 @@
     "test:update-snapshots": "karma start --update-snapshots",
     "test:prune-snapshots": "karma start --prune-snapshots",
     "test:compatibility": "karma start --compatibility all --coverage",
-    "test:compatibility:watch": "karma start --compatibility all --auto-watch=true --single-run=false",
-    "test:bs": "karma start karma.bs.config.js --compatibility all --coverage"
+    "test:compatibility:watch": "karma start --compatibility all --auto-watch=true --single-run=false"
   },
   "dependencies": {
     "haunted": "^4.6.0-beta.0",
@@ -33,7 +32,6 @@
     "@open-wc/prettier-config": "^0.1.10",
     "@open-wc/testing": "^2.0.0",
     "@open-wc/testing-karma": "^3.0.0",
-    "@open-wc/testing-karma-bs": "^1.0.0",
     "es-dev-server": "^1.5.0",
     "eslint": "^6.1.0",
     "husky": "^1.0.0",

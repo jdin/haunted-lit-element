@@ -6,7 +6,7 @@ const register = (name, renderer, props = undefined) =>
   window.customElements.define(name, litElementComponent(renderer, props));
 
 describe('HauntedLitElement', () => {
-  it('shows Test initially', async () => {
+  it('shows basic text', async () => {
     register(
       'test-el-1',
       () =>

@@ -18,8 +18,6 @@
 
     const renderer = () => {
         const [count, setCount] = useState(0);
-        // const count = 0;
-        // const setCount = () => null;
         return html`<p>${count}</p><button @click=${() => setCount(count + 1)}>+</button>`;
     };
 

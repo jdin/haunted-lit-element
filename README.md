@@ -24,7 +24,7 @@ npm i haunted-lit-element
         return html`<h1>${title}</h1><p>${count}</p><button @click=${() => setCount(count + 1)}>+</button>`;
     };
 
-    const properties = {title: String};
+    const properties = {title: {type: String}};
     const styles = css`h1 {color:red}`;
     window.customElements.define('my-el', component(renderer, {properties, styles}));
 </script>

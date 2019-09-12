@@ -3,10 +3,29 @@
   "version": "0.0.5",
   "description": "A missing connection between LitElement and Haunted",
   "author": "jdin",
-  "repository": "https://github.com/jdin/haunted-lit-element",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdin/haunted-lit-element"
+  },
+  "bugs": {
+    "url": "https://github.com/jdin/haunted-lit-element/issues"
+  },
+  "homepage": "https://github.com/jdin/haunted-lit-element#readme",
   "license": "MIT",
   "main": "index.js",
   "module": "index.js",
+  "keywords": [
+    "lit-element",
+    "lit-html",
+    "haunted",
+    "hooks",
+    "react-hooks",
+    "web-components"
+  ],
+  "files": [
+    "index.js",
+    "src"
+  ],
   "scripts": {
     "start": "es-dev-server --app-index demo/index.html --node-resolve --open --watch",
     "start:compatibility": "es-dev-server --app-index demo/index.html --compatibility all --node-resolve --open --watch",

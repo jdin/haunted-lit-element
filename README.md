@@ -16,7 +16,7 @@ npm i haunted-lit-element
 <script type="module">
     import {useState} from "haunted/core.js";
     import {css, html} from "lit-element";
-    import {litElementComponent} from "haunted-lit-element";
+    import component from "haunted-lit-element";
 
     const renderer = ({title}) => {
         const [count, setCount] = useState(0);
@@ -25,7 +25,7 @@ npm i haunted-lit-element
 
     const properties = {title: String};
     const styles = css`h1 {color:red}`;
-    window.customElements.define('my-element', litElementComponent(renderer, {properties, styles}));
+    window.customElements.define('my-el', component(renderer, {properties, styles}));
 </script>
 
 <my-element title="Hi There!"></my-element>

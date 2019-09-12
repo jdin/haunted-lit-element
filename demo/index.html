@@ -9,13 +9,12 @@
   </style>
 </head>
 <body>
-<div id="demo"></div>
+<my-el title="Hi there!"></my-el>
 
 <script type="module">
-    import {render} from 'lit-html';
     import {useState} from "haunted/core.js";
     import {css, html} from "lit-element";
-    import {litElementComponent} from "../index.js";
+    import component from "../index.js";
 
     const renderer = ({title}) => {
         const [count, setCount] = useState(0);
@@ -24,12 +23,7 @@
 
     const properties = {title: String};
     const styles = css`h1 {color:red}`;
-    window.customElements.define('my-el', litElementComponent(renderer, {properties, styles}));
-
-    render(
-        html`<my-el title="Hi there!"></my-el>`,
-        document.querySelector('#demo')
-    );
+    window.customElements.define('my-el', component(renderer, {properties, styles}));
 </script>
 </body>
 </html>

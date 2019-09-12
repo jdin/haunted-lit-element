@@ -29,7 +29,7 @@ npm i haunted-lit-element
     window.customElements.define('my-el', component(renderer, {properties, styles}));
 </script>
 
-<my-element title="Hi There!"></my-element>
+<my-el title="Hi There!"></my-el>
 ```
 
 ## Testing using karma

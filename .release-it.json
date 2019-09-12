@@ -1,0 +1,13 @@
+{
+  "git": {
+    "changelog": "git log --pretty=format:'* %s (%h)' [REV_RANGE]"
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Release %s",
+    "tokenRef": "GITHUB_TOKEN"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

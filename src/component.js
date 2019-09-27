@@ -1,13 +1,16 @@
 import { HauntedLitElement } from './HauntedLitElement.js';
 
-export const litElementComponent = (renderer, props = {}, baseCls = HauntedLitElement) => {
-  const retCls = class extends baseCls {
+export const litElementComponent = (renderer, propsOrBaseCls = {}, baseCls = HauntedLitElement) => {
+  const localProps = typeof propsOrBaseCls === 'object' ? propsOrBaseCls : {};
+  const localBaseClass = typeof propsOrBaseCls === 'function' ? propsOrBaseCls : baseCls;
+
+  const retCls = class extends localBaseClass {
     render() {
       return renderer.call(this, this);
     }
   };
 
-  Object.entries(props).forEach(([key, val]) => {
+  Object.entries(localProps).forEach(([key, val]) => {
     retCls[key] = val;
   });
 

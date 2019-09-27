@@ -13,20 +13,30 @@ npm i haunted-lit-element
 ```
 
 ## Usage
+
+Example of using LitElement's [properties](https://lit-element.polymer-project.org/guide/properties) 
+and [styles](https://lit-element.polymer-project.org/guide/styles) helper.
+
 ```html
 <script type="module">
-    import {useState} from "haunted/core.js";
+    import {useState} from "haunted";
     import {css, html} from "lit-element";
-    import component from "haunted-lit-element";
+    import {component, HauntedLitElement} from "haunted-lit-element";
+
+    class MyExtLitElement extends HauntedLitElement {
+        // ... my own stuff
+    }
 
     const renderer = ({title}) => {
         const [count, setCount] = useState(0);
         return html`<h1>${title}</h1><p>${count}</p><button @click=${() => setCount(count + 1)}>+</button>`;
     };
 
+    /** LitElement's Properties */
     const properties = {title: {type: String}};
+    /** LitElement's css helper function */
     const styles = css`h1 {color:red}`;
-    window.customElements.define('my-el', component(renderer, {properties, styles}));
+    window.customElements.define('my-el', component(renderer, {properties, styles}, MyExtLitElement));
 </script>
 
 <my-el title="Hi There!"></my-el>

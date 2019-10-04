@@ -24,7 +24,7 @@ This library provides `component` function that is made in the way as it is in `
 
 ### `component(MyEl)`
 
-Similar to `haunted` but the base class is LitElement:
+Similar to `haunted` but the base class is `LitElement`:
 
 ```javascript
 import {html} from 'lit-html';
@@ -34,15 +34,15 @@ window.customElements.define('my-el', component(() => html`hello world`));
 
 ### `component(MyEl, optsOrBaseCls)`
 
-The second parameter in `component` function can be options or a `base class` 
+The second parameter in `component` function can be `options` or a `base class` 
 which should be derived from `HauntedLitElement`.
 
-The options are in most cases are [properties](https://lit-element.polymer-project.org/guide/properties) 
+The `options` are in most cases are [properties](https://lit-element.polymer-project.org/guide/properties) 
 and [styles](https://lit-element.polymer-project.org/guide/styles) from LitElement. 
-But it can actually be anything as at the end it just a static field in the base class.
-It is done in that way as there are extensions that use similar approach with their own configuration.
+But it can actually be anything as at the end it is just a static field in the base class.
+It is done in that way because there are LitElement extensions that use similar approach with their own configuration.
 
-Example of defining options as second argument:
+Example of defining `options` as second argument:
 ```javascript
 import {css} from 'lit-element';
 import {component} from 'haunted-lit-element';
@@ -55,7 +55,7 @@ const styles = css`/* my css styles */`;
 window.customElements.define('my-el', component(MyEl, {properties, styles}));
 ```
 
-Example of defining base class as second argument:
+Example of defining `base class` as second argument:
 ```javascript
 import {component, HauntedLitElement} from 'haunted-lit-element';
 
@@ -82,7 +82,7 @@ and [styles](https://lit-element.polymer-project.org/guide/styles) helper with a
     import {component, HauntedLitElement} from "haunted-lit-element";
 
     class MyExtHauntedLitElement extends HauntedLitElement {
-        // ... my own stuff
+        // ... my own stuff that works with my own props
     }
 
     const MyEl = ({title}) => {

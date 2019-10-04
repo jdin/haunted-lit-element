@@ -20,7 +20,7 @@ npm i haunted-lit-element
 
 ## Usage
 
-This library provides `component` function that I have tried to make exactly in the way as it is done in `Haunted`.
+This library provides `component` function that is made in the way as it is in `Haunted`.
 
 ### `component(MyEl)`
 

@@ -1,7 +1,9 @@
 # Haunted Lit Element
 
 [![Build Status](https://travis-ci.com/jdin/haunted-lit-element.svg?branch=master)](https://travis-ci.com/jdin/haunted-lit-element) 
-[![npm](https://img.shields.io/npm/v/haunted-lit-element)](https://img.shields.io/npm/v/haunted-lit-element)
+[![npm](https://img.shields.io/npm/v/haunted-lit-element)](https://www.npmjs.com/package/haunted-lit-element)
+[![size](https://img.shields.io/bundlephobia/minzip/haunted-lit-element)](https://bundlephobia.com/result?p=haunted-lit-element)
+[![downloads](https://img.shields.io/npm/dt/haunted-lit-element)](https://www.npmjs.com/package/haunted-lit-element)
 
 A missing connection between [Haunted](https://github.com/matthewp/haunted) and [LitElement](https://github.com/polymer/lit-element).
 

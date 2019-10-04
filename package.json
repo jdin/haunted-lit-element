@@ -44,11 +44,13 @@
     "release": "release-it",
     "release:dry": "release-it --dry-run"
   },
-  "dependencies": {
+  "peerDependencies": {
     "haunted": "^4.6.0",
     "lit-element": "^2.0.0"
   },
   "devDependencies": {
+    "haunted": "^4.6.0",
+    "lit-element": "^2.0.0",
     "@open-wc/eslint-config": "^1.0.0",
     "@open-wc/prettier-config": "^0.1.10",
     "@open-wc/testing": "^2.3.4",

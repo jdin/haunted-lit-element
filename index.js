@@ -1,6 +1,5 @@
-import { litElementComponent } from './src/component.js';
+import { component } from './src/component.js';
 
+export { component };
 export { HauntedLitElement } from './src/HauntedLitElement.js';
-export { litElementComponent };
-export { litElementComponent as component };
-export default litElementComponent;
+export default component;

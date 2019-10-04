@@ -5,7 +5,11 @@
 
 A missing connection between [Haunted](https://github.com/matthewp/haunted) and [LitElement](https://github.com/polymer/lit-element).
 
-This project follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+It makes it possible to use LitElement's features like 
+[properties](https://lit-element.polymer-project.org/guide/properties) 
+and [styles](https://lit-element.polymer-project.org/guide/styles) in Haunted.
+
+> This project follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
 ## Installation
 ```bash
@@ -14,8 +18,59 @@ npm i haunted-lit-element
 
 ## Usage
 
+This library provides `component` function that I have tried to make exactly in the way as it is done in `Haunted`.
+
+### 1. With one parameter
+The most simple as in haunted but your base class in this case is LitElement:
+
+```javascript
+import {html} from 'lit-html';
+import {component} from 'haunted-lit-element';
+window.customElements.define('my-el', component(() => html`hello world`));
+```
+
+### 2. With two parameters
+
+The second parameter in `component` function can be options or a `base class` 
+which should be derived from `HauntedLitElement`.
+
+The options are in most cases are [properties](https://lit-element.polymer-project.org/guide/properties) 
+and [styles](https://lit-element.polymer-project.org/guide/styles) from LitElement. 
+But it can actually be anything as at the end it just creates a static field in the base class.
+It is done in that way as you can there are extensions that use similar approach with their own configuration.
+
+Example of defining options as second argument:
+```javascript
+import {css} from 'lit-element';
+import {component} from 'haunted-lit-element';
+
+const MyEl = () => { /*...*/ };
+
+const properties = {myParam: {type: String}, /*...*/};
+const styles = css`/* my css styles */`;
+
+window.customElements.define('my-el', component(MyEl, {properties, styles}));
+```
+
+Example of defining base class as second argument:
+```javascript
+import {component, HauntedLitElement} from 'haunted-lit-element';
+
+class MyExtHauntedLitElement extends HauntedLitElement {
+    // ... my own stuff
+}
+
+const MyEl = () => { /*...*/ };
+
+window.customElements.define('my-el', component(MyEl, MyExtHauntedLitElement));
+```
+
+### 3. With three parameters
+
+If you want to use options and a base class than the base class is the second argument and options are the third.
+
 Example of using LitElement's [properties](https://lit-element.polymer-project.org/guide/properties) 
-and [styles](https://lit-element.polymer-project.org/guide/styles) helper.
+and [styles](https://lit-element.polymer-project.org/guide/styles) helper with a custom base class.
 
 ```html
 <script type="module">
@@ -23,20 +78,22 @@ and [styles](https://lit-element.polymer-project.org/guide/styles) helper.
     import {css, html} from "lit-element";
     import {component, HauntedLitElement} from "haunted-lit-element";
 
-    class MyExtLitElement extends HauntedLitElement {
+    class MyExtHauntedLitElement extends HauntedLitElement {
         // ... my own stuff
     }
 
-    const renderer = ({title}) => {
+    const MyEl = ({title}) => {
         const [count, setCount] = useState(0);
         return html`<h1>${title}</h1><p>${count}</p><button @click=${() => setCount(count + 1)}>+</button>`;
     };
 
+    const myOwnProps = {/*...*/};
     /** LitElement's Properties */
     const properties = {title: {type: String}};
     /** LitElement's css helper function */
-    const styles = css`h1 {color:red}`;
-    window.customElements.define('my-el', component(renderer, {properties, styles}, MyExtLitElement));
+    const styles = css`h1 {color:red}`;    
+   
+    window.customElements.define('my-el', component(MyEl, MyExtHauntedLitElement, {properties, styles, myOwnProps}));
 </script>
 
 <my-el title="Hi There!"></my-el>

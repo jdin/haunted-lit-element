@@ -1,8 +1,8 @@
 import { HauntedLitElement } from './HauntedLitElement.js';
 
-export const litElementComponent = (renderer, propsOrBaseCls = {}, baseCls = HauntedLitElement) => {
-  const localProps = typeof propsOrBaseCls === 'object' ? propsOrBaseCls : {};
-  const localBaseClass = typeof propsOrBaseCls === 'function' ? propsOrBaseCls : baseCls;
+export const component = (renderer, propsOrBaseCls = HauntedLitElement, props = {}) => {
+  const localProps = typeof propsOrBaseCls === 'object' ? propsOrBaseCls : props;
+  const localBaseClass = typeof propsOrBaseCls === 'function' ? propsOrBaseCls : HauntedLitElement;
 
   const retCls = class extends localBaseClass {
     render() {

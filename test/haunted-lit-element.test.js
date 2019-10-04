@@ -1,9 +1,9 @@
 import { useState } from 'haunted';
 import { html, fixture, expect } from '@open-wc/testing';
-import { litElementComponent } from '../src/component.js';
+import { component } from '../src/component.js';
 
 const register = (name, renderer, props = undefined) =>
-  window.customElements.define(name, litElementComponent(renderer, props));
+  window.customElements.define(name, component(renderer, props));
 
 describe('HauntedLitElement', () => {
   it('shows basic text', async () => {

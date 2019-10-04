@@ -37,10 +37,10 @@ window.customElements.define('my-el', component(() => html`hello world`));
 The second parameter in `component` function can be `options` or a `base class` 
 which should be derived from `HauntedLitElement`.
 
-The `options` are in most cases are [properties](https://lit-element.polymer-project.org/guide/properties) 
-and [styles](https://lit-element.polymer-project.org/guide/styles) from LitElement. 
+The `options` in most cases are [properties](https://lit-element.polymer-project.org/guide/properties) 
+and [styles](https://lit-element.polymer-project.org/guide/styles) from `LitElement`. 
 But it can actually be anything as at the end it is just a static field in the base class.
-It is done in that way because there are LitElement extensions that use similar approach with their own configuration.
+It is done in that way because there are `LitElement` extensions that use similar approach with their own configuration.
 
 Example of defining `options` as second argument:
 ```javascript

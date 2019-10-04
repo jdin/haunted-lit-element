@@ -22,8 +22,9 @@ npm i haunted-lit-element
 
 This library provides `component` function that I have tried to make exactly in the way as it is done in `Haunted`.
 
-### 1. With one parameter
-The most simple as in haunted but your base class in this case is LitElement:
+### `component(MyEl)`
+
+Similar to `haunted` but the base class is LitElement:
 
 ```javascript
 import {html} from 'lit-html';
@@ -31,15 +32,15 @@ import {component} from 'haunted-lit-element';
 window.customElements.define('my-el', component(() => html`hello world`));
 ```
 
-### 2. With two parameters
+### `component(MyEl, optsOrBaseCls)`
 
 The second parameter in `component` function can be options or a `base class` 
 which should be derived from `HauntedLitElement`.
 
 The options are in most cases are [properties](https://lit-element.polymer-project.org/guide/properties) 
 and [styles](https://lit-element.polymer-project.org/guide/styles) from LitElement. 
-But it can actually be anything as at the end it just creates a static field in the base class.
-It is done in that way as you can there are extensions that use similar approach with their own configuration.
+But it can actually be anything as at the end it just a static field in the base class.
+It is done in that way as there are extensions that use similar approach with their own configuration.
 
 Example of defining options as second argument:
 ```javascript
@@ -67,7 +68,7 @@ const MyEl = () => { /*...*/ };
 window.customElements.define('my-el', component(MyEl, MyExtHauntedLitElement));
 ```
 
-### 3. With three parameters
+### `component(myEl, baseCls, opts)`
 
 If you want to use options and a base class than the base class is the second argument and options are the third.
 

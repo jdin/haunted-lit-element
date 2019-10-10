@@ -1,5 +1,5 @@
-import { useState } from 'haunted';
-import { html, fixture, expect } from '@open-wc/testing';
+import { useState, useEffect, useCallback } from 'haunted';
+import { html, fixture, expect, fixtureCleanup } from '@open-wc/testing';
 import { component } from '../src/component.js';
 
 const register = (name, renderer, props = undefined) =>
@@ -47,12 +47,15 @@ describe('HauntedLitElement', () => {
     expect(el2).shadowDom.to.equal(`test=bla`);
   });
 
-  it('checks haunted works', async () => {
+  it('checks haunted useState and useCallback works', async () => {
     const renderer = () => {
       const [count, setCount] = useState(0);
+      const onClick = useCallback(() => {
+        setCount(count + 1);
+      }, []);
       return html`
         <p>${count}</p>
-        <button @click=${() => setCount(count + 1)}>+</button>
+        <button @click=${onClick}>+</button>
       `;
     };
     register('test-el-3', renderer);
@@ -65,5 +68,31 @@ describe('HauntedLitElement', () => {
     el.shadowRoot.querySelector('button').click();
     await new Promise(resolve => setTimeout(resolve)); // wait for run effects
     expect(el).shadowDom.to.equal(`<p>1</p><button>+</button>`);
+  });
+
+  it('checks haunted useEffect works', async () => {
+    let isCleanudUp = false;
+    const renderer = () => {
+      const [val, setVal] = useState(0);
+      useEffect(() => {
+        setVal(1);
+        return () => {
+          isCleanudUp = true;
+        };
+      }, [true]);
+      return html`
+        <p>${val}</p>
+      `;
+    };
+    register('test-el-4', renderer);
+    const el = await fixture(
+      html`
+        <test-el-4></test-el-4>
+      `,
+    );
+    expect(el).shadowDom.to.equal(`<p>1</p>`);
+    expect(isCleanudUp).to.equal(false);
+    fixtureCleanup();
+    expect(isCleanudUp).to.equal(true);
   });
 });

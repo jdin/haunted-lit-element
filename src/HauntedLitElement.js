@@ -1,6 +1,8 @@
 import { LitElement } from 'lit-element';
 import { State } from 'haunted/core.js';
 
+const defer = Promise.resolve().then.bind(Promise.resolve());
+
 export class HauntedLitElement extends LitElement {
   constructor() {
     super();
@@ -9,5 +11,15 @@ export class HauntedLitElement extends LitElement {
 
   update(_changedProperties) {
     this.haunted.run(() => super.update(_changedProperties));
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    defer(() => this.haunted.runEffects());
+  }
+
+  disconnectedCallback() {
+    this.haunted.teardown();
+    super.disconnectedCallback();
   }
 }

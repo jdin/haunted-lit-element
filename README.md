@@ -76,30 +76,60 @@ Example of using LitElement's [properties](https://lit-element.polymer-project.o
 and [styles](https://lit-element.polymer-project.org/guide/styles) helper with a custom base class.
 
 ```html
+<my-el
+  mystring="hello world"
+  mynumber="5"
+  mybool
+  myobj='{"stuff":"hi"}'
+  myarray='[1,2,3,4]'
+></my-el>
+
+
 <script type="module">
     import {useState} from "haunted";
     import {css, html} from "lit-element";
     import {component, HauntedLitElement} from "haunted-lit-element";
 
-    class MyExtHauntedLitElement extends HauntedLitElement {
-        // ... my own stuff that works with my own props
+    class MyExtLitElement extends HauntedLitElement {
+        // ... my own stuff
     }
 
-    const MyEl = ({title}) => {
+    const renderer = ({mystring, mynumber, mybool, myobj, myarray}) => {
         const [count, setCount] = useState(0);
-        return html`<h1>${title}</h1><p>${count}</p><button @click=${() => setCount(count + 1)}>+</button>`;
+        return html`
+            <p>${count}</p>
+            <button @click=${() => setCount(count + 1)}>+</button>
+            <pre>
+                typeof mystring = ${typeof mystring}
+                typeof mynumber = ${typeof mynumber}
+                typeof mybool = ${typeof mybool}
+                typeof myobj = ${typeof myobj}
+                Array.isArray(myarray) = ${Array.isArray(myarray)}
+            </pre>`;
     };
 
-    const myOwnProps = {/*...*/};
     /** LitElement's Properties */
-    const properties = {title: {type: String}};
+    const properties = {
+        mystring: {type: String},
+        mynumber: {type: Number},
+        mybool: {type: Boolean},
+        myobj: {type: Object},
+        myarray: {type: Array}
+    };
     /** LitElement's css helper function */
-    const styles = css`h1 {color:red}`;    
-   
-    window.customElements.define('my-el', component(MyEl, MyExtHauntedLitElement, {properties, styles, myOwnProps}));
+    const styles = css`p {color:red}`;
+    window.customElements.define('my-el', component(renderer, {properties, styles}, MyExtLitElement));
 </script>
+```
 
-<my-el title="Hi There!"></my-el>
+The output for properties is going to be:
+
+```text
+typeof mystring = string
+typeof mynumber = number
+typeof mybool = boolean
+typeof myobj = object
+Array.isArray(myarray) = true
 ```
 
 ## Testing using karma

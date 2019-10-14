@@ -10,11 +10,14 @@ export class HauntedLitElement extends LitElement {
   }
 
   update(_changedProperties) {
-    this.haunted.run(() => super.update(_changedProperties));
+    this.haunted.run(() => {
+      super.update(_changedProperties);
+    });
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  updated(_changedProperties) {
+    super.updated(_changedProperties);
+    this.haunted.runLayoutEffects();
     defer(() => this.haunted.runEffects());
   }
 

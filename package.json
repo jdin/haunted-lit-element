@@ -1,6 +1,6 @@
 {
   "name": "haunted-lit-element",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A missing connection between LitElement and Haunted",
   "author": "jdin",
   "repository": {

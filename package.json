@@ -58,7 +58,7 @@
     "es-dev-server": "^1.5.0",
     "eslint": "^6.1.0",
     "husky": "^4.2.0",
-    "lint-staged": "^10.0.2",
+    "lint-staged": "^11.1.0",
     "release-it": "^12.3.6",
     "webpack-merge": "^4.1.5"
   },
